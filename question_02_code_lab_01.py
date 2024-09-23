@@ -10,7 +10,7 @@ Created on Sun Sep 22 22:26:35 2024
 import numpy as np
 from sklearn.datasets import make_swiss_roll
 
-# Step 1: Generate Swiss Roll dataset [5 points]
+# 1: Generate Swiss Roll dataset [5 points]
 X, y = make_swiss_roll(n_samples=1000, noise=0.1)
 
 # Output the shape of the generated dataset
@@ -21,7 +21,7 @@ print("Swiss roll data shape:", X.shape)
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
-# Step 2: Plot the Swiss Roll dataset [2 points]
+# 2: Plot the Swiss Roll dataset [2 points]
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
@@ -42,7 +42,7 @@ plt.show()
 # Import necessary libraries for Kernel PCA
 from sklearn.decomposition import KernelPCA
 
-# Step 3: Apply Kernel PCA with different kernels [6 points]
+# 3: Apply Kernel PCA with different kernels [6 points]
 kernels = ['linear', 'rbf', 'sigmoid']  # Define the kernels to use
 kpca_results = {}
 
@@ -52,13 +52,11 @@ for kernel in kernels:
     X_kpca = kpca.fit_transform(X)  # Fit and transform the Swiss roll dataset
     kpca_results[kernel] = X_kpca   # Store the results in dictionary
 
-# Now, you have the kPCA results for each kernel stored in `kpca_results`
-
 
 # Import libraries for plotting kPCA results
 import matplotlib.pyplot as plt
 
-# Step 4: Plot kPCA results for each kernel and compare [6 points]
+# 4: Plot kPCA results for each kernel and compare [6 points]
 plt.figure(figsize=(15, 5))  # Create a figure with a specified size
 
 # Loop through each kernel and plot the corresponding kPCA results
@@ -80,7 +78,7 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
 from sklearn.preprocessing import Binarizer
 
-# Step 5: Logistic Regression with GridSearchCV [14 points]
+# 5: Logistic Regression with GridSearchCV [14 points]
 
 # Binarize the target variable 'y'
 y_binarized = Binarizer(threshold=y.mean()).fit_transform(y.reshape(-1, 1)).ravel()
@@ -103,5 +101,5 @@ grid_search = GridSearchCV(pipeline, param_grid, cv=5)  # 5-fold cross-validatio
 # Fit the GridSearchCV object on the data
 grid_search.fit(X, y_binarized)  # Ensure y_binarized is the correct target variable
 
-# Step 6: Print the best parameters found by GridSearchCV [2 points]
+# 6: Plot the results from using GridSearchCV in (5). [2 points]
 print("Best parameters found by GridSearchCV:", grid_search.best_params_)
